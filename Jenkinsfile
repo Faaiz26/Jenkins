@@ -16,9 +16,11 @@ pipeline {
         stage('Install dependencies'){
             steps {
                 sh '''
-                export HOME=/tmp
-                pip install -r requirements.txt 
-                pip install  pytest
+                python3 -m venv venv
+                . venv/bin/activate
+                pip install --upgrade pip
+                pip install -r requirements.txt
+                pip install pytest
                 '''
             }
         }
@@ -27,8 +29,9 @@ pipeline {
             steps {
 
                 sh '''
-                export PATH=/tmp/.local/bin:$PATH
-                pytest tests/'''
+                . venv/bin/activate
+                pytest tests/
+                '''
             }
         }
 
