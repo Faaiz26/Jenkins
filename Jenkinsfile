@@ -15,7 +15,10 @@ pipeline {
 
         stage('Install dependencies'){
             steps {
-                sh 'pip install --user -r requirements.txt --no-cache-dir --upgrade'
+                sh '''
+                export HOME=/tmp
+                pip install -r requirements.txt
+                '''
             }
         }
 
