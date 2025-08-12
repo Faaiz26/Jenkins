@@ -25,7 +25,10 @@ pipeline {
 
         stage('Run tests') {
             steps {
-                sh 'pytest tests/'
+
+                sh '''
+                export PATH=/tmp/.local/bin:$PATH
+                pytest tests/'''
             }
         }
 
