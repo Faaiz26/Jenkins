@@ -18,7 +18,7 @@ pipeline {
                 sh '''
                 export HOME=/tmp
                 pip install -r requirements.txt 
-                pip install -r pytest
+                pip install  pytest
                 '''
             }
         }
